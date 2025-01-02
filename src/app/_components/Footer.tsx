@@ -1,7 +1,7 @@
 import { Film } from "lucide-react";
 import { Mail } from "lucide-react";
 import { Phone } from "lucide-react";
- 
+
 export const Footer = () => {
   return (
     <div className="w-[100%] bg-[#4338CA] py-10 px-5 text-white grid grid-cols-1 gap-7">

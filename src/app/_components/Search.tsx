@@ -1,5 +1,5 @@
 import { MoonType } from "../layout";
- 
+
 export const Search = ({theme}:{theme: MoonType}) => {
   const stroke = theme === "dark" ? "#fff" : "#000";
   return (

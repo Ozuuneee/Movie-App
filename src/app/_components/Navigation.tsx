@@ -1,12 +1,9 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Film} from "lucide-react";
 import {Search} from "@/app/_components/Search"
 import { Moon } from "@/app/_components/Moon";
 import { MoonType} from "@/app/layout";      
- 
- 
+
+
 export const Navigation = ({toggleTheme,theme}:{toggleTheme: ()=> void; theme: MoonType;}) => {
     return (
         <div className="w-[100%] flex justify-between px-5 py-[11.5px]">
@@ -23,5 +20,3 @@ export const Navigation = ({toggleTheme,theme}:{toggleTheme: ()=> void; theme: M
         </div>
     );
 };
- 
- 
