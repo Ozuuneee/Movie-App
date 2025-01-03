@@ -12,7 +12,7 @@ export default function Page() {
   const params = useParams();
   const [movieDetails, setMovieDetails] = useState<Movie>();
   const [movieCredits, setMovieCredits] = useState<Credits>();
-  const isAdult = movieDetails?.adult ? "SG" : "PG";
+  const isAdult = movieDetails?.adult ? "R" : "PG";
   const movieTime = movieDetails?.runtime ?? 0;
   const hours = Math.floor(movieTime / 60);
   const min = movieTime % 60;
@@ -45,7 +45,7 @@ export default function Page() {
         <div className="flex flex-col gap-4">
           <div className="px-5 flex gap-10">
             <div>
-              <h3 className="text-2xl font-semibold">{movieDetails?.title}</h3>
+              <h3 className="text-2xl font-semibold w-56">{movieDetails?.title}</h3>
               <p className="text-sm">
                 {movieDetails?.release_date} • {isAdult} • {hours}h {min}min{" "}
               </p>
@@ -54,7 +54,7 @@ export default function Page() {
               <Star color="#FDE047" fill="#FDE047" width="20px" height="20px" />
               <p className="flex flex-col text-sm">
                 <span className="after:content-['/10'] after:text-muted-foreground ">
-                  {movieDetails?.vote_average}
+                  {movieDetails?.vote_average.toFixed(1)}
                 </span>
                 <span className="text-muted-foreground">
                   {movieDetails?.vote_count}
