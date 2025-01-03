@@ -13,6 +13,7 @@ export default {
   			background: 'hsl(var(--background))',
 			bgColor: 'hsl(var(--bgColor))',
 			starColor: 'hsl(var(--starColor))',
+			btColor: 'hsl(var(--btColor))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
