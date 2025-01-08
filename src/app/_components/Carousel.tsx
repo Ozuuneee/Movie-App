@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Movie } from "../constants/types";
  
-import { Card, CardContent } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -58,7 +58,7 @@ export function CarouselDemo() {
               />
               <CardContent className="">
                 <span className="text-4xl font-semibold"></span>
-                <div className="flex gap-24">
+                <div className="flex gap-16">
                   <div className="ml-1">
                     <p className="text-[14px] mt-6">Now playing:</p>
                     <h1 className="text-[24px] font-bold w-30 w-40">

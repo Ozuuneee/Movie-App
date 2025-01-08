@@ -72,6 +72,7 @@ export const PaginationComp = ({ pageInfo }: { pageInfo: PageInfo }) => {
                   </PaginationLink>
                 </PaginationItem>
               ) : '.' )}
+          {/* ))} */}
           {pageInfo.currentPage !== pageInfo.totalPage && (<PaginationItem>
             <PaginationNext
               href="#"

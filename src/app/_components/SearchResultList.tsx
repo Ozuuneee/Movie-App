@@ -1,52 +1,93 @@
-// "use client";
+"use client";
+import { useEffect, useState } from "react";
+import { Movie } from "../constants/types";
+import { options } from "../constants/api";
+import { ArrowRight, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-// import { options } from "../constants/api";
-// import { Movie } from "../constants/types";
-// import Link from "next/link";
-// import { useEffect, useState } from "react";
+export const SearchResultList = ({
+  searchValue,
+  setSearchValue,
+  setIsSearching,
+}: {
+  searchValue: string;
+  setSearchValue: (searchValue: string) => void;
+  setIsSearching: (isSearching: boolean) => void;
+}) => {
+  const [movies, setMovies] = useState<Movie[]>();
 
-// type SearchResultListProps = {
-//     searchValue: string;
-// };
-
-// const SearchResultList = ({searchValue}: SearchResultListProps ) => {
-//     const { movie, setMovies } = useState<Movie[]>();
-
-//     useEffect(() => {
-//         async function fetchMovies() {
-//             const response = await fetch(
-//                 `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=1`,
-//                 options
-//             );
-//             const data = await response.json();
-//             setMovies(data.results?.slice(0, 5));
-//         };
-//         fetchMovies();
-//     }, [searchValue]);
-
-// return (
-//     <div className="absolute top-16, md: top-14 w-full max-w-[577px] bg-background rounded-lg shadow-lg">
-//         {!movie ? (
-//             <p>Loading...</p>
-//         ) : (
-//             <>
-//                <div className="p-3">
-//                 {movie.map((movie) => (
-//                     <Link key={movie.id} href={`/movie/${movie.id}`} className="my-4">
-//                         <div>{movie.title}<div/>
-//                     </Link>
-//                 ))}
-//                </div>
-//                <div className="p-3 pt-0">
-//                  <Link href={`/search?query=${searchValue}`}
-//                      className="text-foreground py-2.5 px-4"
-//                  >
-//                      See all results for &#34;{searchValue}&#34;
-//                  </Link>
-//                </div>
-//             </>
-//     </div>
-// )
-// }
-
-// export default SearchResultList;
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${searchValue}&page=1`,
+        options
+      );
+      const resJson = await response.json();
+      setMovies(resJson.results.slice(0, 5));
+      console.log(resJson.results.slice(0, 5));
+    };
+    fetchMovies();
+  }, [searchValue]);
+  return (
+    <div className="bg-background absolute border rounded-lg p-3  top-[90px] left-0 w-[335px] sm:w-[400px] xl:w-[577px]">
+      {movies?.map((movie) => (
+        <div key={"search" + movie.id}>
+          <Link href={`/movie/${movie.id}`}>
+            <div
+              className={`flex p-2 gap-4`}
+              onClick={() => {
+                setSearchValue("");
+                setIsSearching(false);
+              }}
+            >
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                alt={movie.title}
+                className="rounded-lg h-[100px] "
+              />
+              <div className="flex w-full flex-col gap-3">
+                <div>
+                  <h2 className="text-xl font-semibold">{movie.title}</h2>
+                  <div className="flex gap-1 items-center">
+                    <Star
+                      color="#FDE047"
+                      fill="#FDE047"
+                      width="13.33px"
+                      height="12.68px"
+                    />
+                    <span className="after:content-['/10'] after:text-muted-foreground ">
+                      {movie.vote_average.toFixed(1)}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex justify-between">
+                  <h3>{movie?.release_date.slice(0, 4)}</h3>
+                  <Button
+                    variant="outline"
+                    className="border-none flex items-center gap-1"
+                  >
+                    See more
+                    <ArrowRight />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Link>
+          <div className="border-[.2px] "></div>
+        </div>
+      ))}
+      <Link
+        href={`/search?query=${searchValue}&page=1`}
+        onClick={() => {
+          setSearchValue("");
+          setIsSearching(false);
+        }}
+      >
+        <div className="pt-2 px-4 text-sm font-medium">
+          See all results for "{searchValue}"
+        </div>
+      </Link>
+    </div>
+  );
+};
