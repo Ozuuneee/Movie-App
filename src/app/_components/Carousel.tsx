@@ -1,8 +1,8 @@
 "use client";
- 
+
 import * as React from "react";
 import { Movie } from "../constants/types";
- 
+
 import { CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -13,39 +13,39 @@ import { Star } from "lucide-react";
 import { Play } from "lucide-react";
 import { useState, useEffect } from "react";
 import { options } from "../constants/api";
- 
+
 export function CarouselDemo() {
   const stColor = "#FDE047";
   const [movies, setMovies] = useState<Movie[]>([]);
- 
+
   useEffect(() => {
     const fetchMovies = async () => {
       const movie1 = await fetch(
         `https://api.themoviedb.org/3/movie/402431`,
         options
       ).then((res) => res.json());
- 
+
       const movie2 = await fetch(
         `https://api.themoviedb.org/3/movie/1241982`,
         options
       ).then((res) => res.json());
- 
+
       const movie3 = await fetch(
         `https://api.themoviedb.org/3/movie/558449`,
         options
       ).then((res) => res.json());
- 
+
       setMovies([movie1, movie2, movie3]);
     };
     fetchMovies();
   }, []);
- 
+
   console.log({ movies });
- 
+
   if (movies.length === 0) {
     return <p>Loading...</p>;
   }
- 
+
   return (
     <Carousel className="w-full -mb-6">
       <CarouselContent>
@@ -54,7 +54,7 @@ export function CarouselDemo() {
             <div>
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                className="w-full" 
+                className="w-full"
               />
               <CardContent className="">
                 <span className="text-4xl font-semibold"></span>
@@ -90,4 +90,3 @@ export function CarouselDemo() {
     </Carousel>
   );
 }
- 
