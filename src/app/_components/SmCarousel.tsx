@@ -15,7 +15,7 @@ import { useState, useEffect } from "react";
 import { options } from "../constants/api";
 import { Badge } from "@/components/ui/badge";
 
-export function CarouselDemo() {
+export function SmCarousel() {
   const stColor = "#FDE047";
   const [movies, setMovies] = useState<Movie[]>([]);
 

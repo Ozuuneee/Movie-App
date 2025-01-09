@@ -1,4 +1,4 @@
-export const CchevronLeft = () => {
+export const Left = () => {
   return (
     <svg
       width="40"

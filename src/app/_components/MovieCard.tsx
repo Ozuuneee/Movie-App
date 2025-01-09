@@ -13,8 +13,8 @@ export default function MovieCard({ movie }: { movie: Movie }) {
             className="rounded-t-lg"
           />
         ) : (
-          <div className="h-[233.91px]  w-[157.5px] xl:h-[340px] text-center content-center ">
-            No picture
+          <div className="flex justify-center items-center h-[233.91px] w-[157.5px] xl:h-[340px]">
+            Picture Not Found
           </div>
         )}
         <div className="p-2">

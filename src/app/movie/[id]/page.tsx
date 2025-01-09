@@ -3,12 +3,9 @@ import { options } from "@/app/constants/api";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Credits, Movie } from "@/app/constants/types";
-import { ArrowRight, Star } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { useParams } from "next/navigation";
-import MoreLikeThis from "@/app/_components/MoreLikeThis";
-import { MobileDetail } from "@/app/_components/MobileMovieDetails";
-import { DesktopDetail } from "@/app/_components/DesktopMovieDetails";
+import { SmDetail } from "@/app/_components/SmMovieDetails";
+import { LgDetail } from "@/app/_components/LgMovieDetails";
 
 export default function Page() {
   const params = useParams();
@@ -45,7 +42,7 @@ export default function Page() {
     <div>
       <div className="sm:hidden">
         {movieDetails && movieCredits && (
-          <MobileDetail
+          <SmDetail
             movieDetails={movieDetails}
             movieCredits={movieCredits}
             isAdult={isAdult}
@@ -56,7 +53,7 @@ export default function Page() {
       </div>
       <div className="hidden sm:block">
         {movieDetails && movieCredits && (
-          <DesktopDetail
+          <LgDetail
             movieDetails={movieDetails}
             movieCredits={movieCredits}
             isAdult={isAdult}

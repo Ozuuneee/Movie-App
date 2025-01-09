@@ -30,7 +30,7 @@ export const SearchResultList = ({
     fetchMovies();
   }, [searchValue]);
   return (
-    <div className="bg-background absolute border rounded-lg p-3  top-[90px] left-0 w-[335px] sm:w-[400px] xl:w-[577px]">
+    <div className="bg-background shadow-lg shadow-gray-600 absolute rounded-lg p-3 z-10 top-[75px] -left-[12px] w-[360px] sm:w-[400px] xl:w-[577px] ">
       {movies?.map((movie) => (
         <div key={"search" + movie.id}>
           <Link href={`/movie/${movie.id}`}>

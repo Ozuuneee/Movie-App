@@ -1,4 +1,4 @@
-export const CchevronRight = () => (
+export const Right = () => (
   <svg
     width="6"
     height="9"

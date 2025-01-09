@@ -11,7 +11,7 @@ type Details = {
   min: number;
 };
 
-export const MobileDetail = ({
+export const SmDetail = ({
   movieDetails,
   movieCredits,
   isAdult,

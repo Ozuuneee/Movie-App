@@ -11,7 +11,7 @@ type Details = {
   min: number;
 };
 
-export const DesktopDetail = ({
+export const LgDetail = ({
   movieDetails,
   movieCredits,
   isAdult,
@@ -29,7 +29,6 @@ export const DesktopDetail = ({
             </p>
           </div>
           <div>
-            <h3 className="text-xs font-medium">Rating</h3>
             <div className="flex gap-1 items-center">
               <Star color="#FDE047" fill="#FDE047" width="20px" height="20px" />
               <p className="flex flex-col text-sm">
